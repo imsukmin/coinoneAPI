@@ -1,0 +1,26 @@
+{
+  "name": "coinone-api",
+  "version": "1.0.0",
+  "description": "coinone api module",
+  "main": "coinone.js",
+  "scripts": {},
+  "keywords": [
+    "coinone",
+    "node",
+    "node.js"
+  ],
+  "author": "imsukmin",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "axios": "^0.16.1",
+    "crypto": "0.0.3"
+  }
+}
