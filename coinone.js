@@ -85,6 +85,10 @@ var isCurrency = function (c) {
   return (c === 'btc' || c === 'eth' || c === 'etc')
 }
 
+var isCurrencyPublic = function (c) {
+  return (c === 'btc' || c === 'eth' || c === 'etc' || c === 'xrp')
+}
+
 var isOrderType = function (o) {
   return (o === 'buy' || o === 'sell')
 }
@@ -112,24 +116,24 @@ var serializeObject = function (object) {
  */
 // Public - Ticker
 coinoneAPI.prototype.ticker = function (currency) {
-  if(!isCurrency(currency) && currency !== 'all' ) {
+  if(!isCurrencyPublic(currency) && currency !== 'all' ) {
     console.error('ticker: currency type is NOT correct! [ currency: ' + currency + ']')
     return
   }
   var parameter = {
-    'currency': currency // Default value: btc, Allowed values: btc, eth, etc, all
+    'currency': currency // Default value: btc, Allowed values: btc, eth, etc, xrp, all
   }
   return this.callPublicAPI('ticker', parameter)
 }
 
 // Public - Recent Complete Orders
 coinoneAPI.prototype.recentCompleteOrders = function (currency) {
-  if(!isCurrency(currency)) {
+  if(!isCurrencyPublic(currency)) {
     console.error('recentCompleteOrders: currency type is NOT correct! [ currency: ' + currency + ']')
     return
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, eth, etc
+    'currency': currency, // Default value: btc, Allowed values: btc, eth, etc, xrp
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('trades', parameter)
@@ -137,12 +141,12 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
 
 // Public - Orderbook
 coinoneAPI.prototype.orderbook = function (currency) {
-  if(!isCurrency(currency)) {
+  if(!isCurrencyPublic(currency)) {
     console.error('orderbook: currency type is NOT correct! [ currency: ' + currency + ']')
     currency = 'btc'
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, eth, etc
+    'currency': currency, // Default value: btc, Allowed values: btc, eth, etc, xrp
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('orderbook', parameter)
