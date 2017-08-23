@@ -82,11 +82,11 @@ var isInteger = function (value) {
 }
 
 var isCurrency = function (c) {
-  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp')
+  return (c === 'btc' || c === 'eth' || c === 'etc')
 }
 
 var isCurrencyPublic = function (c) {
-  return (c === 'btc' || c === 'eth' || c === 'etc')
+  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp')
 }
 
 var isOrderType = function (o) {
@@ -117,7 +117,7 @@ var serializeObject = function (object) {
 // Public - Ticker
 coinoneAPI.prototype.ticker = function (currency) {
   if(!isCurrencyPublic(currency) && currency !== 'all' ) {
-    console.error('ticker: currency type is NOT correct! [ currency: ' + currency + ']')
+    console.error('ticker: currency type is NOT correct! [ currency: ' + currency + ' ]')
     return
   }
   var parameter = {
@@ -129,7 +129,7 @@ coinoneAPI.prototype.ticker = function (currency) {
 // Public - Recent Complete Orders
 coinoneAPI.prototype.recentCompleteOrders = function (currency) {
   if(!isCurrencyPublic(currency)) {
-    console.error('recentCompleteOrders: currency type is NOT correct! [ currency: ' + currency + ']')
+    console.error('recentCompleteOrders: currency type is NOT correct! [ currency: ' + currency + ' ]')
     return
   }
   var parameter = {
@@ -142,7 +142,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
 // Public - Orderbook
 coinoneAPI.prototype.orderbook = function (currency) {
   if(!isCurrencyPublic(currency)) {
-    console.error('orderbook: currency type is NOT correct! [ currency: ' + currency + ']')
+    console.error('orderbook: currency type is NOT correct! [ currency: ' + currency + ' ]')
     currency = 'btc'
   }
   var parameter = {
