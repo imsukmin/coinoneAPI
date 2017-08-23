@@ -86,7 +86,7 @@ var isCurrency = function (c) {
 }
 
 var isCurrencyPublic = function (c) {
-  return (c === 'btc' || c === 'eth' || c === 'etc' || c === 'xrp')
+  return (c === 'btc' || c === 'eth' || c === 'etc')
 }
 
 var isOrderType = function (o) {
