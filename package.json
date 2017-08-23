@@ -1,6 +1,6 @@
 {
   "name": "coinone-api",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "coinone api module",
   "main": "coinone.js",
   "scripts": {},
