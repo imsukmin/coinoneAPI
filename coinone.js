@@ -4,7 +4,7 @@ const crypto = require('crypto')
 function coinoneAPI (_ACCESS_TOKEN, _SECRET_KEY) {
   if (!(this instanceof arguments.callee )) {
     console.error('it is ONLY use with "new" keyword')
-    return 
+    return false
   }
 
   var ACCESS_TOKEN = _ACCESS_TOKEN
@@ -118,7 +118,7 @@ var serializeObject = function (object) {
 coinoneAPI.prototype.ticker = function (currency) {
   if(!isCurrencyPublic(currency) && currency !== 'all' ) {
     console.error('ticker: currency type is NOT correct! [ currency: ' + currency + ' ]')
-    return
+    return false
   }
   var parameter = {
     'currency': currency // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, all
@@ -130,7 +130,7 @@ coinoneAPI.prototype.ticker = function (currency) {
 coinoneAPI.prototype.recentCompleteOrders = function (currency) {
   if(!isCurrencyPublic(currency)) {
     console.error('recentCompleteOrders: currency type is NOT correct! [ currency: ' + currency + ' ]')
-    return
+    return false
   }
   var parameter = {
     'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
@@ -143,7 +143,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
 coinoneAPI.prototype.orderbook = function (currency) {
   if(!isCurrencyPublic(currency)) {
     console.error('orderbook: currency type is NOT correct! [ currency: ' + currency + ' ]')
-    return
+    return false
   }
   var parameter = {
     'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
@@ -160,7 +160,7 @@ coinoneAPI.prototype.cancelAllOrder = function (currency) {
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('cancelAllOrder: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
 
   var url = 'https://api.coinone.co.kr/v2/order/cancel_all/';
@@ -177,27 +177,27 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
   // Allowed values: KRW, long
   if (!isInteger(price) || price < 0) {  
     console.error('cancelOrder: price is NOT integer OR minus value', price)
-    return
+    return false
   }
   // Allowed values: double
   if (!isNumber(qty) || qty < 0) {  
     console.error('cancelOrder: qty is NOT number OR minus value', qty)
-    return
+    return false
   }
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('cancelOrder: currency is NOT right value: "btc", "eth", "etc"', currency)
-    return
+    return false
   }
   // Allowed values: orderID:String
   if (typeof orderID === 'string') {  
     console.error('cancelOrder: orderID is NOT right value: orderID:string', currency)
-    return
+    return false
   }
   // Allowed values: buy, sell
   if (isOrderType(orderType)) {  
     console.error('cancelOrder: orderType is NOT right value: "buy", "sell"', currency)
-    return
+    return false
   }
 
   var url = 'https://api.coinone.co.kr/v2/order/cancel/';
@@ -218,17 +218,17 @@ coinoneAPI.prototype.limitBuy = function (currency, price, qty) {
   // Allowed values: KRW, long
   if (!isInteger(price) || price < 0) {  
     console.error('limitBuy: price is NOT integer OR minus value', price)
-    return
+    return false
   }
   // Allowed values: double
   if (!isNumber(qty) || qty < 0) {  
     console.error('limitBuy: qty is NOT number OR minus value', qty)
-    return
+    return false
   }
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('limitBuy: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
 
   var url = 'https://api.coinone.co.kr/v2/order/limit_buy/';
@@ -247,17 +247,17 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
   // Allowed values: KRW, long
   if (!isInteger(price) || price < 0) {  
     console.error('limitSell: price is NOT integer OR minus value', price)
-    return
+    return false
   }
   // Allowed values: double
   if (!isNumber(qty) || qty < 0) {  
     console.error('limitSell: qty is NOT number OR minus value', qty)
-    return
+    return false
   }
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('limitSell: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
  
   var url = 'https://api.coinone.co.kr/v2/order/limit_sell/';
@@ -276,12 +276,12 @@ coinoneAPI.prototype.marketBuy = function (currency, price) {
   // Allowed values: KRW, long
   if (!isInteger(price) || price < 0) {  
     console.error('marketBuy: price is NOT integer OR minus value', price)
-    return
+    return false
   }
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('marketBuy: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
  
   var url = 'https://api.coinone.co.kr/v2/order/market_buy/';
@@ -299,12 +299,12 @@ coinoneAPI.prototype.marketSell = function (currency, qty) {
   // Allowed values: double
   if (!isNumber(qty) || qty < 0) {  
     console.error('marketSell: qty is NOT number OR minus value', qty)
-    return
+    return false
   }
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('marketSell: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
  
   var url = 'https://api.coinone.co.kr/v2/order/market_sell/';
@@ -322,7 +322,7 @@ coinoneAPI.prototype.myCompleteOrders = function (currency) {
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('myCompleteOrders: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
  
   var url = 'https://api.coinone.co.kr/v2/order/complete_orders/';
@@ -339,7 +339,7 @@ coinoneAPI.prototype.myLimitOrders = function (currency) {
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
     console.error('myCompleteOrders: currency is NOT right value: btc, eth, etc', currency)
-    return
+    return false
   }
  
   var url = 'https://api.coinone.co.kr/v2/order/limit_orders/';
