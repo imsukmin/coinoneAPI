@@ -82,7 +82,7 @@ var isInteger = function (value) {
 }
 
 var isCurrency = function (c) {
-  return (c === 'btc' || c === 'eth' || c === 'etc')
+  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp')
 }
 
 var isOrderType = function (o) {
@@ -117,7 +117,7 @@ coinoneAPI.prototype.ticker = function (currency) {
     return
   }
   var parameter = {
-    'currency': currency // Default value: btc, Allowed values: btc, eth, etc, all
+    'currency': currency // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, all
   }
   return this.callPublicAPI('ticker', parameter)
 }
@@ -129,7 +129,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
     return
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, eth, etc
+    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('trades', parameter)
@@ -142,7 +142,7 @@ coinoneAPI.prototype.orderbook = function (currency) {
     currency = 'btc'
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, eth, etc
+    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('orderbook', parameter)
