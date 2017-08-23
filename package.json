@@ -1,6 +1,6 @@
 {
   "name": "coinone-api",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "coinone api module",
   "main": "coinone.js",
   "scripts": {},
@@ -9,6 +9,10 @@
     "node",
     "node.js"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imsukmin/coinoneAPI.git"
+  },
   "author": "imsukmin",
   "engines": {
     "node": ">= 0.4.0"
