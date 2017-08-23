@@ -143,7 +143,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
 coinoneAPI.prototype.orderbook = function (currency) {
   if(!isCurrencyPublic(currency)) {
     console.error('orderbook: currency type is NOT correct! [ currency: ' + currency + ' ]')
-    currency = 'btc'
+    return
   }
   var parameter = {
     'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
