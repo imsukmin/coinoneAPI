@@ -174,12 +174,12 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
   }
   // Allowed values: orderID:String
   if (typeof orderID === 'string') {  
-    console.error('cancelOrder: orderID is NOT right value: orderID:string', currency)
+    console.error('cancelOrder: orderID is NOT right value: orderID:string', typeof orderID, orderID)
     return false
   }
   // Allowed values: buy, sell
   if (isOrderType(orderType)) {  
-    console.error('cancelOrder: orderType is NOT right value: "buy", "sell"', currency)
+    console.error('cancelOrder: orderType is NOT right value: "buy", "sell"', orderType)
     return false
   }
 
@@ -208,9 +208,9 @@ coinoneAPI.prototype.limitBuy = function (currency, price, qty) {
     console.error('limitBuy: qty is NOT number OR minus value', qty)
     return false
   }
-  // Allowed values: [btc], eth, etc
+  // Allowed values: btc, bch, eth, etc, xrp, qtum
   if (!isCurrency(currency)) {  
-    console.error('limitBuy: currency is NOT right value: btc, eth, etc', currency)
+    console.error('limitBuy: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
     return false
   }
 
@@ -237,9 +237,9 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
     console.error('limitSell: qty is NOT number OR minus value', qty)
     return false
   }
-  // Allowed values: [btc], eth, etc
+  // Allowed values: btc, bch, eth, etc, xrp, qtum
   if (!isCurrency(currency)) {  
-    console.error('limitSell: currency is NOT right value: btc, eth, etc', currency)
+    console.error('limitSell: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
     return false
   }
  
@@ -256,9 +256,9 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
 
 // Order_V2 - My Complete Orders
 coinoneAPI.prototype.myCompleteOrders = function (currency) {
-  // Allowed values: [btc], eth, etc
+  // Allowed values: btc, bch, eth, etc, xrp, qtum
   if (!isCurrency(currency)) {  
-    console.error('myCompleteOrders: currency is NOT right value: btc, eth, etc', currency)
+    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
     return false
   }
  
@@ -273,9 +273,9 @@ coinoneAPI.prototype.myCompleteOrders = function (currency) {
 
 // Order_V2 - My Limit Orders
 coinoneAPI.prototype.myLimitOrders = function (currency) {
-  // Allowed values: [btc], eth, etc
+  // Allowed values: btc, bch, eth, etc, xrp, qtum
   if (!isCurrency(currency)) {  
-    console.error('myCompleteOrders: currency is NOT right value: btc, eth, etc', currency)
+    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
     return false
   }
  
