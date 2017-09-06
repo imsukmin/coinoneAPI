@@ -182,7 +182,7 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
     return false
   }
   // Allowed values: buy, sell
-  if (isOrderType(orderType)) {  
+  if (!isOrderType(orderType)) {
     console.error('cancelOrder: orderType is NOT right value: "buy", "sell"', orderType)
     return false
   }
