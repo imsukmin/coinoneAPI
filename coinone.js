@@ -69,35 +69,39 @@ function coinoneAPI (_ACCESS_TOKEN, _SECRET_KEY) {
 }
 
 // utils
-var isNumber = function (value) {
+const isString = function (value) {
+  return typeof value === 'string'
+}
+
+const isNumber = function (value) {
   return typeof value === 'number'
 }
 
-var isFloat = function (value) {
+const isFloat = function (value) {
   return (value === +value) && (value !== (value|0))
 }
 
-var isInteger = function (value) {
+const isInteger = function (value) {
   return (value === +value) && (value === (value|0))
 }
 
-var isCurrencyMarket = function (c) {
+const isCurrencyMarket = function (c) {
   return (c === 'btc' || c === 'eth' || c === 'etc')
 }
 
-var isCurrency = function (c) {
+const isCurrency = function (c) {
   return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp' || c === 'qtum')
 }
 
-var isOrderType = function (o) {
+const isOrderType = function (o) {
   return (o === 'buy' || o === 'sell')
 }
 
-var isEmpty = function (obj) {
+const isEmpty = function (obj) {
     return Object.keys(obj).length === 0;
 }
 
-var serializeObject = function (object) { 
+const serializeObject = function (object) {
   if (isEmpty(object)) {
     return ''
   }
@@ -173,7 +177,7 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
     return false
   }
   // Allowed values: orderID:String
-  if (typeof orderID === 'string') {  
+  if (!isString(orderID)) {
     console.error('cancelOrder: orderID is NOT right value: orderID:string', typeof orderID, orderID)
     return false
   }
