@@ -187,8 +187,8 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
   var payload = {
     'access_token': this.get_access_token(),
     'order_id': orderID,
-    'price': price.toFixed(4),
-    'qty': parseFloat(qty),
+    'price': price,
+    'qty': parseFloat(qty).toFixed(4),
     'is_ask': orderType === 'sell' ? 1 : 0,
     'currency': currency,
     'nonce': Date.now()
@@ -217,8 +217,8 @@ coinoneAPI.prototype.limitBuy = function (currency, price, qty) {
   var url = 'https://api.coinone.co.kr/v2/order/limit_buy/';
     var payload = {
     'access_token': this.get_access_token(),
-    'price': price.toFixed(4),
-    'qty': parseFloat(qty),
+    'price': price,
+    'qty': parseFloat(qty).toFixed(4),
     'currency': currency,
     'nonce': Date.now()
   }
@@ -246,8 +246,8 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
   var url = 'https://api.coinone.co.kr/v2/order/limit_sell/';
   var payload = {
     'access_token': this.get_access_token(),
-    'price': price.toFixed(4),
-    'qty': parseFloat(qty),
+    'price': price,
+    'qty': parseFloat(qty).toFixed(4),
     'currency': currency,
     'nonce': Date.now()
   }
