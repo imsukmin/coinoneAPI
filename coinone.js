@@ -155,23 +155,6 @@ coinoneAPI.prototype.orderbook = function (currency) {
 /**
  * personal API
  */
-// Order_V2 - Cancel All Order
-coinoneAPI.prototype.cancelAllOrder = function (currency) {
-  // Allowed values: [btc], eth, etc
-  if (!isCurrency(currency)) {  
-    console.error('cancelAllOrder: currency is NOT right value: btc, eth, etc', currency)
-    return false
-  }
-
-  var url = 'https://api.coinone.co.kr/v2/order/cancel_all/';
-  var payload = {
-    'access_token': this.get_access_token(),
-    'currency': currency,
-    'nonce': Date.now()
-  }
-  return this.callPersonalAPI(url, payload)
-}
-
 // Order_V2 - Cancel Order
 coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orderType) {
   // Allowed values: KRW, long
@@ -204,7 +187,7 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
   var payload = {
     'access_token': this.get_access_token(),
     'order_id': orderID,
-    'price': price,
+    'price': price.toFixed(4),
     'qty': parseFloat(qty),
     'is_ask': orderType === 'sell' ? 1 : 0,
     'currency': currency,
@@ -234,7 +217,7 @@ coinoneAPI.prototype.limitBuy = function (currency, price, qty) {
   var url = 'https://api.coinone.co.kr/v2/order/limit_buy/';
     var payload = {
     'access_token': this.get_access_token(),
-    'price': price,
+    'price': price.toFixed(4),
     'qty': parseFloat(qty),
     'currency': currency,
     'nonce': Date.now()
@@ -263,56 +246,10 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
   var url = 'https://api.coinone.co.kr/v2/order/limit_sell/';
   var payload = {
     'access_token': this.get_access_token(),
-    'price': price,
+    'price': price.toFixed(4),
     'qty': parseFloat(qty),
     'currency': currency,
     'nonce': Date.now()
-  }
-  return this.callPersonalAPI(url, payload)
-}
-
-// Order_V2 - Market Buy
-coinoneAPI.prototype.marketBuy = function (currency, price) {
-  // Allowed values: KRW, long
-  if (!isInteger(price) || price < 0) {  
-    console.error('marketBuy: price is NOT integer OR minus value', price)
-    return false
-  }
-  // Allowed values: [btc], eth, etc
-  if (!isCurrencyMarket(currency)) {
-    console.error('marketBuy: currency is NOT right value: btc, eth, etc', currency)
-    return false
-  }
- 
-  var url = 'https://api.coinone.co.kr/v2/order/market_buy/';
-    var payload = {
-    'access_token': this.get_access_token(),
-    'price': price,
-    'currency': currency,
-    'nonce': Date.now()
-  }
-  return this.callPersonalAPI(url, payload)
-}
-
-// Order_V2 - Market Sell
-coinoneAPI.prototype.marketSell = function (currency, qty) {
-  // Allowed values: double
-  if (!isCurrencyMarket(qty) || qty < 0) {
-    console.error('marketSell: qty is NOT number OR minus value', qty)
-    return false
-  }
-  // Allowed values: [btc], eth, etc
-  if (!isCurrency(currency)) {  
-    console.error('marketSell: currency is NOT right value: btc, eth, etc', currency)
-    return false
-  }
- 
-  var url = 'https://api.coinone.co.kr/v2/order/market_sell/';
-    var payload = {
-    'access_token': this.get_access_token(),
-    'qty': parseFloat(qty),
-    'nonce': Date.now(),
-    'currency': currency
   }
   return this.callPersonalAPI(url, payload)
 }
