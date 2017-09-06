@@ -81,11 +81,11 @@ var isInteger = function (value) {
   return (value === +value) && (value === (value|0))
 }
 
-var isCurrency = function (c) {
+var isCurrencyMarket = function (c) {
   return (c === 'btc' || c === 'eth' || c === 'etc')
 }
 
-var isCurrencyPublic = function (c) {
+var isCurrency = function (c) {
   return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp' || c === 'qtum')
 }
 
@@ -116,7 +116,7 @@ var serializeObject = function (object) {
  */
 // Public - Ticker
 coinoneAPI.prototype.ticker = function (currency) {
-  if(!isCurrencyPublic(currency) && currency !== 'all' ) {
+  if(!isCurrency(currency) && currency !== 'all' ) {
     console.error('ticker: currency type is NOT correct! [ currency: ' + currency + ' ]')
     return false
   }
@@ -128,7 +128,7 @@ coinoneAPI.prototype.ticker = function (currency) {
 
 // Public - Recent Complete Orders
 coinoneAPI.prototype.recentCompleteOrders = function (currency) {
-  if(!isCurrencyPublic(currency)) {
+  if(!isCurrency(currency)) {
     console.error('recentCompleteOrders: currency type is NOT correct! [ currency: ' + currency + ' ]')
     return false
   }
@@ -141,7 +141,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
 
 // Public - Orderbook
 coinoneAPI.prototype.orderbook = function (currency) {
-  if(!isCurrencyPublic(currency)) {
+  if(!isCurrency(currency)) {
     console.error('orderbook: currency type is NOT correct! [ currency: ' + currency + ' ]')
     return false
   }
@@ -279,7 +279,7 @@ coinoneAPI.prototype.marketBuy = function (currency, price) {
     return false
   }
   // Allowed values: [btc], eth, etc
-  if (!isCurrency(currency)) {  
+  if (!isCurrencyMarket(currency)) {
     console.error('marketBuy: currency is NOT right value: btc, eth, etc', currency)
     return false
   }
@@ -297,7 +297,7 @@ coinoneAPI.prototype.marketBuy = function (currency, price) {
 // Order_V2 - Market Sell
 coinoneAPI.prototype.marketSell = function (currency, qty) {
   // Allowed values: double
-  if (!isNumber(qty) || qty < 0) {  
+  if (!isCurrencyMarket(qty) || qty < 0) {
     console.error('marketSell: qty is NOT number OR minus value', qty)
     return false
   }
