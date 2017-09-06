@@ -4,7 +4,7 @@
 
 ## demo (telegram bot)
 
-[@CoinoneHelpBot](https://web.telegram.org/#/im?p=@CoinoneHelpBot)
+[@CoinoneHelpBot](https://t.me/coinoneHelpBot)
 
 
 ## install
