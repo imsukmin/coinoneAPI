@@ -24,7 +24,6 @@
     }
   ],
   "dependencies": {
-    "axios": "^0.16.1",
-    "crypto": "0.0.3"
+    "axios": "^0.16.1"
   }
 }
