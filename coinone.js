@@ -86,11 +86,11 @@ const isInteger = function (value) {
 }
 
 const isCurrencyMarket = function (c) {
-  return (c === 'btc' || c === 'eth' || c === 'etc')
+  return (c === 'btc' || c === 'eth' || c === 'etc' || c === 'xrp' || c === 'qtum' || c === 'iota' || c === 'ltc')
 }
 
 const isCurrency = function (c) {
-  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp' || c === 'qtum')
+  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp' || c === 'qtum' || c === 'ltc' || c === 'iota')
 }
 
 const isOrderType = function (o) {
@@ -125,7 +125,7 @@ coinoneAPI.prototype.ticker = function (currency) {
     return false
   }
   var parameter = {
-    'currency': currency // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, all
+    'currency': currency // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc, all
   }
   return this.callPublicAPI('ticker', parameter)
 }
@@ -137,7 +137,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
     return false
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
+    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('trades', parameter)
@@ -150,7 +150,7 @@ coinoneAPI.prototype.orderbook = function (currency) {
     return false
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp
+    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('orderbook', parameter)
@@ -173,7 +173,7 @@ coinoneAPI.prototype.cancelOrder = function (currency, price, qty, orderID, orde
   }
   // Allowed values: [btc], eth, etc
   if (!isCurrency(currency)) {  
-    console.error('cancelOrder: currency is NOT right value: "btc", "eth", "etc"', currency)
+    console.error('cancelOrder: currency is NOT right value: "btc", "eth", "etc", "qtum", "iota", "ltc"', currency)
     return false
   }
   // Allowed values: orderID:String
