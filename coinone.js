@@ -212,9 +212,9 @@ coinoneAPI.prototype.limitBuy = function (currency, price, qty) {
     console.error('limitBuy: qty is NOT number OR minus value', qty)
     return false
   }
-  // Allowed values: btc, bch, eth, etc, xrp, qtum
+  // Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
   if (!isCurrency(currency)) {  
-    console.error('limitBuy: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
+    console.error('limitBuy: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
 
@@ -243,7 +243,7 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
   }
   // Allowed values: btc, bch, eth, etc, xrp, qtum
   if (!isCurrency(currency)) {  
-    console.error('limitSell: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
+    console.error('limitSell: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
  
@@ -260,9 +260,9 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
 
 // Order_V2 - My Complete Orders
 coinoneAPI.prototype.myCompleteOrders = function (currency) {
-  // Allowed values: btc, bch, eth, etc, xrp, qtum
+  // Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
   if (!isCurrency(currency)) {  
-    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
+    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
  
@@ -277,9 +277,9 @@ coinoneAPI.prototype.myCompleteOrders = function (currency) {
 
 // Order_V2 - My Limit Orders
 coinoneAPI.prototype.myLimitOrders = function (currency) {
-  // Allowed values: btc, bch, eth, etc, xrp, qtum
+  // Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
   if (!isCurrency(currency)) {  
-    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum', currency)
+    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
  
