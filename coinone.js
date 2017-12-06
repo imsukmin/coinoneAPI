@@ -292,6 +292,11 @@ coinoneAPI.prototype.myLimitOrders = function (currency) {
   return this.callPersonalAPI(url, payload)
 }
 
+// Account V2 - balance
+coinoneAPI.prototype.myBalance = function () { 
+  return this.callPersonalAPI('https://api.coinone.co.kr/v2/account/balance/', null)
+}
+
 module.exports = coinoneAPI
 
 module.exports.default = coinoneAPI
