@@ -86,11 +86,11 @@ const isInteger = function (value) {
 }
 
 const isCurrencyMarket = function (c) {
-  return (c === 'btc' || c === 'eth' || c === 'etc' || c === 'xrp' || c === 'qtum' || c === 'iota' || c === 'ltc')
+  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' || c === 'xrp' || c === 'qtum'|| c === 'ltc' || c === 'iota' || c === 'btg')
 }
 
 const isCurrency = function (c) {
-  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp' || c === 'qtum' || c === 'ltc' || c === 'iota')
+  return (c === 'btc' || c === 'bch' || c === 'eth' || c === 'etc' ||  c === 'xrp' || c === 'qtum' || c === 'ltc' || c === 'iota' || c === 'btg')
 }
 
 const isOrderType = function (o) {
@@ -125,7 +125,7 @@ coinoneAPI.prototype.ticker = function (currency) {
     return false
   }
   var parameter = {
-    'currency': currency // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc, all
+    'currency': currency // Default value: btc, Allowed values: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc, all
   }
   return this.callPublicAPI('ticker', parameter)
 }
@@ -137,7 +137,7 @@ coinoneAPI.prototype.recentCompleteOrders = function (currency) {
     return false
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
+    'currency': currency, // Default value: btc, Allowed values: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('trades', parameter)
@@ -150,7 +150,7 @@ coinoneAPI.prototype.orderbook = function (currency) {
     return false
   }
   var parameter = {
-    'currency': currency, // Default value: btc, Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
+    'currency': currency, // Default value: btc, Allowed values: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc
     'period': 'hour' // Default value: hour, Allowed values: hour, day
   }
   return this.callPublicAPI('orderbook', parameter)
@@ -212,9 +212,9 @@ coinoneAPI.prototype.limitBuy = function (currency, price, qty) {
     console.error('limitBuy: qty is NOT number OR minus value', qty)
     return false
   }
-  // Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
+  // Allowed values: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc
   if (!isCurrency(currency)) {  
-    console.error('limitBuy: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
+    console.error('limitBuy: currency is NOT right value: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
 
@@ -241,9 +241,9 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
     console.error('limitSell: qty is NOT number OR minus value', qty)
     return false
   }
-  // Allowed values: btc, bch, eth, etc, xrp, qtum
+  // Allowed values: btc, bch, btg, eth, etc, xrp, qtum
   if (!isCurrency(currency)) {  
-    console.error('limitSell: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
+    console.error('limitSell: currency is NOT right value: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
  
@@ -260,9 +260,9 @@ coinoneAPI.prototype.limitSell = function (currency, price, qty) {
 
 // Order_V2 - My Complete Orders
 coinoneAPI.prototype.myCompleteOrders = function (currency) {
-  // Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
+  // Allowed values: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc
   if (!isCurrency(currency)) {  
-    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
+    console.error('myCompleteOrders: currency is NOT right value: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
  
@@ -277,9 +277,9 @@ coinoneAPI.prototype.myCompleteOrders = function (currency) {
 
 // Order_V2 - My Limit Orders
 coinoneAPI.prototype.myLimitOrders = function (currency) {
-  // Allowed values: btc, bch, eth, etc, xrp, qtum, iota, ltc
+  // Allowed values: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc
   if (!isCurrency(currency)) {  
-    console.error('myCompleteOrders: currency is NOT right value: btc, bch, eth, etc, xrp, qtum, iota, ltc', currency)
+    console.error('myCompleteOrders: currency is NOT right value: btc, bch, btg, eth, etc, xrp, qtum, iota, ltc', currency)
     return false
   }
  

@@ -1,13 +1,14 @@
 {
   "name": "coinone-api",
-  "version": "1.4.4",
-  "description": "coinone api module",
+  "version": "1.5.0",
+  "description": "coinone api module using axios",
   "main": "coinone.js",
   "scripts": {},
   "keywords": [
     "coinone",
     "node",
-    "node.js"
+    "node.js",
+    "axios"
   ],
   "repository": {
     "type": "git",
